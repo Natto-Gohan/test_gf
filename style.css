@@ -220,8 +220,19 @@ body {
 }
 
 @media (max-width: 600px) {
+<<<<<<< HEAD
     .title { font-size: 1.5rem; }
     .success-title { font-size: 2.2rem; }
     .container { padding: 2rem 1.5rem; }
     .btn { padding: 10px 24px; font-size: 1.1rem; }
+=======
+    .title { font-size: 1.4rem; margin-bottom: 1.5rem; }
+    .success-title { font-size: 2rem; }
+    .container { padding: 2rem 1rem; width: 92%; }
+    .buttons { flex-direction: column; gap: 1rem; }
+    .btn { padding: 12px 24px; font-size: 1.1rem; width: 100%; max-width: 250px; }
+    .kitty-img img { width: 130px; }
+    .bg-message { font-size: 0.95rem; padding: 10px 18px; }
+    #success-screen img { width: 180px; }
+>>>>>>> e08ecbb (responsive)
 }
