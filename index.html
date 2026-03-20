@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For เพื่อน </title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Mali:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Background element to spawn pleading messages -->
+    <div id="bg-messages-container"></div>
+    
+    <div class="container active" id="main-container">
+        <div class="kitty-img bounce">
+            <img src="https://i.pinimg.com/originals/cc/f6/77/ccf67785235094448b9c0d28c8ceb9b9.gif" alt="Hello Kitty Cute">
+        </div>
+        <h1 class="title">แฟนเก่าคนโปรดที่ชื่อ "เพื่อน"<br>กลับมาใจอ่อนได้ไหม?</h1>
+        <div class="buttons">
+            <button id="yes-btn" class="btn yes">กลับมา 💖</button>
+            <button id="no-btn" class="btn no">ไม่กลับมา 💔</button>
+        </div>
+    </div>
+
+    <div id="success-screen" class="hidden">
+        <img src="https://i.pinimg.com/originals/f8/2f/6d/f82f6d8e11c243cd4a867657d1416a87.gif" alt="Happy Kitty" class="bounce" id="success-img">
+        <div class="success-content fade-in" style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem;">
+            <h1 class="success-title" id="success-message" style="transition: opacity 0.3s ease;">เย้! ดีใจที่สุดดดด </h1>
+            <button id="next-btn" class="btn yes">ต่อไป 💕</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
