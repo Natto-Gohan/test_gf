@@ -68,15 +68,6 @@ function spawnBackgroundMessage() {
     msg.classList.add('bg-message');
     msg.innerText = pleadingMessages[Math.floor(Math.random() * pleadingMessages.length)];
 
-<<<<<<< HEAD
-    // สุ่มตำแหน่งให้กล่องข้อความไม่ทะลุขอบจอ (สมมติความกว้างกล่องสูงสุดน่าจะ 220px สูง 60px)
-    const maxX = window.innerWidth - 240;
-    const maxY = window.innerHeight - 80;
-
-    // ตำแหน่งปลอดภัย
-    const x = Math.max(20, Math.random() * maxX);
-    const y = Math.max(20, Math.random() * maxY);
-=======
     // สุ่มตำแหน่งให้กล่องข้อความไม่ทะลุขอบจอ (รองรับจอมือถือ)
     const estimatedWidth = window.innerWidth < 400 ? 160 : 240;
     const maxX = Math.max(10, window.innerWidth - estimatedWidth);
@@ -85,7 +76,6 @@ function spawnBackgroundMessage() {
     // ตำแหน่งปลอดภัย
     const x = Math.max(10, Math.random() * maxX);
     const y = Math.max(10, Math.random() * maxY);
->>>>>>> e08ecbb (responsive)
     const rot = Math.random() * 20 - 10; // ให้กล่องเอียงนิดๆ แบบน่ารัก (-10 ถึง 10 องศา)
 
     msg.style.left = `${x}px`;
