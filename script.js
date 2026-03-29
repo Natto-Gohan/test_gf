@@ -4,9 +4,6 @@ const yesBtn = document.getElementById('yes-btn');
 const mainContainer = document.getElementById('main-container');
 const successScreen = document.getElementById('success-screen');
 const bgMessagesContainer = document.getElementById('bg-messages-container');
-const successMessage = document.getElementById('success-message');
-const nextBtn = document.getElementById('next-btn');
-const successImg = document.getElementById('success-img');
 
 let noClickCount = 0;
 const pleadingMessages = [
@@ -21,11 +18,24 @@ const pleadingMessages = [
 ];
 
 const successFlow = [
-    { text: "เย้! ดีใจที่สูดดดดดดดดดดด", img: "https://i.pinimg.com/originals/f8/2f/6d/f82f6d8e11c243cd4a867657d1416a87.gif" },
-    { text: "เค้าคิดถึงเธอมากๆเลยนะ", img: "https://i.pinimg.com/736x/39/d4/27/39d4271e2660c4193725a697ee8c9e6f.jpg" },
-    { text: "ขอบคุณที่ยอมให้โอกาสเค้าอีกครั้ง ", img: "https://i.pinimg.com/736x/03/26/0b/03260be99ed6e815bda003ee8217ff2a.jpg" },
-    { text: "สัญญาว่าจะทำตัวให้ดีขึ้น 🥺", img: "https://i.pinimg.com/1200x/fb/cc/43/fbcc43003276a217c2c80b241342f53c.jpg" },
-    { text: "ขอบคุณจริงๆนะ เค้ารักเธอนะ 💖", img: "https://i.pinimg.com/736x/86/e0/47/86e047c1331c101d4a7e5dd9d0812ff9.jpg" }
+    { text: "เย้! ดีใจที่สูดดดดดดดดดดด ที่ๆเราไปเที่ยวคาเฟ่ด้วยกัน ถึงแม้เค้าจะถ่ายได้ไม่ดีแต่เค้าก็ตั้งใจนะะ", img: "1.jpg" },
+    { text: "เค้าคิดถึงเธอมากๆเลยนะ ตอนปีใหม่ที่เราไปบ้านนัท ที่เธอบอกกกันว่าเรามาอยู่ด้วยกันทุกปีเลยนะ", img: "2.jpg" },
+    { text: "ขอบคุณที่ยอมให้โอกาสเค้าอีกครั้ง วันเกิดเธอครั้งนั้นเค้าตั้งใจสั่งเค้กให้เธอเลยนะ ถึงแม้จะไม่ได้มีของขวัญให้เค้าขอโทษนะ", img: "3.jpg" },
+    { text: "สัญญาว่าจะทำตัวให้ดีขึ้น วันนั้นไปรอเธอที่คลินิกเธอหน้าสดแต่เค้าก็ชอบ", img: "4.jpg" },
+    { text: "ขอบคุณจริงๆนะ เค้ารักเธอนะ ตอนนั้นเธอชวนออกมากินฮาจิบังจำได้ว่าเค้าใส่เสื้อยางรถยนต์ มีความสุขจริงๆ", img: "5.jpg" },
+    { text: "สัญญาว่าจะทำตัวให้ดีขึ้น มากินหมาล่าที่ยูเนี่ยนมอ เหมือนช่วงนั้นเธอมีงานที่มอเยอะ มานั่งกินไอติมที่แมคต่อด้วย", img: "6.jpg" },
+    { text: "รูปนี้มาเกษตรแฟร์ มากินหมูกะทะหรือจิ้มจุ่มนี้ละตรงริมสระน้ำ นั่งคุยกับเธอเรื่อยเปื่อย", img: "7.jpg" },
+    { text: "มากินฮาจิบัง เธอหน้าสดอีกแล้วเหมือนตอนนั้นหาร้านนั่งแล้วนึกไม่ออกเลยนั่งกินร้านนี้", img: "8.jpg" },
+    { text: "ของขวัญวันครบรอบ 2.2 ปี เค้าสั่งดอกไม้จาก POPMART ให้เธอเค้าจำได้ว่าลงสตอรี่ด้วย ", img: "9.jpg" },
+    { text: "จำได้ว่ามานั่งกิน Pepper Laucnh ครั้งแรกๆเลย เมื่อก่อนเราเจอกันบ่อยๆ", img: "10.jpg" },
+    { text: "เธอเอาโทรศัพท์เค้าไปเซลฟี่เองสวยมาก ", img: "11.jpg" },
+    { text: "เรากินพาสต้าหน้ากรมเค้า จำได้ว่าเราออกมาตอนดึก ถึงแม้เค้าจะใส่กางเกงขาสั้นเธอก็ไม่อาย", img: "12.jpg" },
+    { text: "มากินบิงซู นั่งคุยนู้นนี้นั้น เธอหน้าสดบ่อยนะเมื่อก่อนนน ทำให้เค้าได้เปลี่ยนรูปโปรด้วย", img: "13.jpg" },
+    { text: "ไปปั่นเป็ดกันตอนนั้น เธอว่าสนุกมากฟิลใหม่ๆ ", img: "14.jpg" },
+    { text: "นั่งกินหมูกะทะ ที่เกษตรแฟร์เราไปกันบ่อยมากเหมือนอีเวนท์หลักเลย", img: "15.jpg" },
+    { text: "เราไปที่ไกลไปนั่งเล่นเครื่องเกมกันสองคน จำได้ว่าขากลับเราพูดเรื่องเดินขึ้นเขา 5555", img: "16.jpg" },
+    { text: "เธอพามากินจ่าอู่ ไอติมอร่อยย เธอชอบซดน้ำซุปหมูกะทะกิน", img: "17.jpg" },
+    { text: "ขากลับตอนเครื่องเล่นเกม เราแวะกินบะหมี่อร่อยมาก พาเค้ากลับดึกครั้งแรกๆ", img: "18.jpg" },
 ];
 let currentMsgIndex = 0;
 
@@ -90,6 +100,31 @@ function showSuccess() {
     bgMessagesContainer.style.display = 'none'; // ซ่อนข้อความพื้นหลังตอนกดตกลง
     successScreen.classList.remove('hidden');
 
+    const slider = document.getElementById('polaroid-slider');
+    slider.innerHTML = '';
+
+    successFlow.forEach((item, index) => {
+        const polaroid = document.createElement('div');
+        polaroid.className = 'polaroid';
+
+        // Random slight rotation for natural polaroid look
+        const randRot = (Math.random() * 8 - 4).toFixed(1);
+        polaroid.style.setProperty('--rand-rot', randRot);
+
+        const img = document.createElement('img');
+        img.src = item.img;
+        img.alt = "Memory";
+        img.draggable = false; // Prevent ghost drag on desktop
+
+        const text = document.createElement('div');
+        text.className = 'polaroid-text';
+        text.innerText = item.text;
+
+        polaroid.appendChild(img);
+        polaroid.appendChild(text);
+        slider.appendChild(polaroid);
+    });
+
     // Create floating sparkles
     for (let i = 0; i < 20; i++) {
         setTimeout(createSparkle, Math.random() * 2000);
@@ -99,27 +134,35 @@ function showSuccess() {
 
 yesBtn.addEventListener('click', showSuccess);
 
-// การแสดงข้อความต่อเนื่องทีละประโยค
-nextBtn.addEventListener('click', () => {
-    currentMsgIndex++;
-    if (currentMsgIndex < successFlow.length) {
-        successMessage.style.opacity = '0';
-        successImg.style.opacity = '0';
-        setTimeout(() => {
-            successMessage.innerText = successFlow[currentMsgIndex].text;
-            if (successFlow[currentMsgIndex].img) {
-                successImg.src = successFlow[currentMsgIndex].img;
-            }
-            successMessage.style.opacity = '1';
-            successImg.style.opacity = '1';
-            successImg.style.transition = 'opacity 0.3s ease';
-        }, 300);
+// Drag to scroll logic for polaroid slider (Desktop)
+const slider = document.getElementById('polaroid-slider');
+let isDown = false;
+let startX;
+let scrollLeft;
 
-        if (currentMsgIndex === successFlow.length - 1) {
-            // ซ่อนปุ่มเมื่อถึงข้อความสุดท้าย
-            nextBtn.style.display = 'none';
-        }
-    }
+slider.addEventListener('mousedown', (e) => {
+    isDown = true;
+    slider.classList.add('active');
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+});
+
+slider.addEventListener('mouseleave', () => {
+    isDown = false;
+    slider.classList.remove('active');
+});
+
+slider.addEventListener('mouseup', () => {
+    isDown = false;
+    slider.classList.remove('active');
+});
+
+slider.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 2;
+    slider.scrollLeft = scrollLeft - walk;
 });
 
 function createSparkle() {
