@@ -20,6 +20,37 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+#cinema-screen::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('https://grainy-gradients.vercel.app/noise.svg');
+    opacity: 0.15;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+}
+
+.movie-projector {
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    opacity: 0.6;
+    transform: scale(0.9);
+}
+
+.movie-projector.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+#cinema-screen::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 120px;
+    background: linear-gradient(to top, rgba(255,0,100,0.15), transparent);
+}
+
 #bg-messages-container {
     position: absolute;
     top: 0;
@@ -246,13 +277,18 @@ body {
     z-index: 10;
 }
 
-.polaroid img {
+.polaroid img,
+.polaroid video {
     width: 100%;
     height: 260px;
     object-fit: cover;
     border-radius: 2px;
     margin-bottom: 12px;
     background-color: #ffe6f2; 
+}
+
+.polaroid video {
+    background-color: #000;
 }
 
 .polaroid-text {
@@ -311,10 +347,12 @@ body {
         width: 240px;
         padding: 10px 10px 25px 10px;
     }
-    .polaroid img {
+    .polaroid img,
+    .polaroid video {
         height: 240px;
     }
     .polaroid-text {
         font-size: 1rem;
     }
 }
+

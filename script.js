@@ -37,6 +37,13 @@ const successFlow = [
     { text: "เธอพามากินจ่าอู่ ไอติมอร่อยย เธอชอบซดน้ำซุปหมูกะทะกิน", img: "17.jpg" },
     { text: "ขากลับตอนเครื่องเล่นเกม เราแวะกินบะหมี่อร่อยมาก พาเค้ากลับดึกครั้งแรกๆ", img: "18.jpg" },
 ];
+
+const videoFlow = [
+    { text: "HNY ปีที่เราไปดูเบียดกัน ตอนแรกนึกว่าจะเป็นแบบอีแทวอน", video: "19.mp4" },
+    { text: "พาเธอไปเล่นเครื่องเล่นที่เซนทรัลรามอินทรา", video: "20.mp4" },
+    { text: "มากินพาสต้ากันหน้ากรมเค้า", video: "21.mp4" }
+];
+
 let currentMsgIndex = 0;
 
 // Entrance animation
@@ -125,6 +132,29 @@ function showSuccess() {
         slider.appendChild(polaroid);
     });
 
+    videoFlow.forEach((item, index) => {
+        const polaroid = document.createElement('div');
+        polaroid.className = 'polaroid';
+
+        // Random slight rotation for natural polaroid look
+        const randRot = (Math.random() * 8 - 4).toFixed(1);
+        polaroid.style.setProperty('--rand-rot', randRot);
+
+        const video = document.createElement('video');
+        video.src = item.video;
+        video.controls = true;
+        video.preload = "metadata";
+        // Optionally add styling inline if needed, but css handles this now
+
+        const text = document.createElement('div');
+        text.className = 'polaroid-text';
+        text.innerText = item.text;
+
+        polaroid.appendChild(video);
+        polaroid.appendChild(text);
+        slider.appendChild(polaroid);
+    });
+
     // Create floating sparkles
     for (let i = 0; i < 20; i++) {
         setTimeout(createSparkle, Math.random() * 2000);
@@ -134,35 +164,42 @@ function showSuccess() {
 
 yesBtn.addEventListener('click', showSuccess);
 
-// Drag to scroll logic for polaroid slider (Desktop)
-const slider = document.getElementById('polaroid-slider');
-let isDown = false;
-let startX;
-let scrollLeft;
+// Drag to scroll logic for sliders (Desktop)
+const sliders = [document.getElementById('polaroid-slider'), document.getElementById('cinema-slider')];
 
-slider.addEventListener('mousedown', (e) => {
-    isDown = true;
-    slider.classList.add('active');
-    startX = e.pageX - slider.offsetLeft;
-    scrollLeft = slider.scrollLeft;
-});
+sliders.forEach(sl => {
+    if (!sl) return;
+    let isDown = false;
+    let startX;
+    let scrollLeft;
 
-slider.addEventListener('mouseleave', () => {
-    isDown = false;
-    slider.classList.remove('active');
-});
+    sl.addEventListener('mousedown', (e) => {
+        // If the user clicks on the video, don't trigger the scroll drag
+        if (e.target.tagName.toLowerCase() === 'video') return;
 
-slider.addEventListener('mouseup', () => {
-    isDown = false;
-    slider.classList.remove('active');
-});
+        isDown = true;
+        sl.classList.add('active');
+        startX = e.pageX - sl.offsetLeft;
+        scrollLeft = sl.scrollLeft;
+    });
 
-slider.addEventListener('mousemove', (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - slider.offsetLeft;
-    const walk = (x - startX) * 2;
-    slider.scrollLeft = scrollLeft - walk;
+    sl.addEventListener('mouseleave', () => {
+        isDown = false;
+        sl.classList.remove('active');
+    });
+
+    sl.addEventListener('mouseup', () => {
+        isDown = false;
+        sl.classList.remove('active');
+    });
+
+    sl.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - sl.offsetLeft;
+        const walk = (x - startX) * 2;
+        sl.scrollLeft = scrollLeft - walk;
+    });
 });
 
 function createSparkle() {
@@ -184,3 +221,50 @@ function createSparkle() {
         sparkle.remove();
     }, 8000);
 }
+
+// --- Movie Projection Logic ---
+const videoUpload = document.getElementById('video-upload');
+const movieModal = document.getElementById('movie-modal');
+const closeMovieBtn = document.getElementById('close-movie');
+const myVideo = document.getElementById('my-video');
+
+if (videoUpload && movieModal && closeMovieBtn && myVideo) {
+    videoUpload.addEventListener('change', function (event) {
+        const file = event.target.files[0];
+        if (file) {
+            const fileURL = URL.createObjectURL(file);
+            myVideo.src = fileURL;
+            movieModal.classList.add('active');
+
+            // Play video automatically when modal opens
+            myVideo.play().catch(e => console.log('Autoplay blocked:', e));
+        }
+    });
+
+    closeMovieBtn.addEventListener('click', () => {
+        movieModal.classList.remove('active');
+        myVideo.pause();
+        myVideo.currentTime = 0;
+        // Reset input so user can re-select the same or another video
+        videoUpload.value = '';
+    });
+}
+
+const slides = document.querySelectorAll('.movie-projector');
+
+function updateActiveSlide() {
+    slides.forEach(slide => slide.classList.remove('active'));
+
+    let center = window.innerWidth / 2;
+
+    slides.forEach(slide => {
+        const rect = slide.getBoundingClientRect();
+        const slideCenter = rect.left + rect.width / 2;
+
+        if (Math.abs(center - slideCenter) < 100) {
+            slide.classList.add('active');
+        }
+    });
+}
+
+document.getElementById('cinema-slider').addEventListener('scroll', updateActiveSlide);
