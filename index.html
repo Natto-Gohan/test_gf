@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +8,15 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Mali:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <!-- Background element to spawn pleading messages -->
     <div id="bg-messages-container"></div>
-    
+
     <div class="container active" id="main-container">
         <div class="kitty-img bounce">
-            <img src="https://i.pinimg.com/originals/cc/f6/77/ccf67785235094448b9c0d28c8ceb9b9.gif" alt="Hello Kitty Cute">
+            <img src="https://i.pinimg.com/originals/cc/f6/77/ccf67785235094448b9c0d28c8ceb9b9.gif"
+                alt="Hello Kitty Cute">
         </div>
         <h1 class="title">แฟนเก่าคนโปรดที่ชื่อ "เพื่อน"<br>กลับมาใจอ่อนได้ไหม?</h1>
         <div class="buttons">
@@ -23,14 +26,72 @@
     </div>
 
     <div id="success-screen" class="hidden">
-        <div class="polaroid-slider fade-in delay-1" id="polaroid-slider">
-            <!-- Polaroids will be injected here via JS -->
+        <div class="gacha-container fade-in delay-1">
+            <h2 class="gacha-title">ตู้สุ่มความทรงจำของเรา</h2>
+            <div class="machine" id="gacha-machine">
+                <img src="https://cdn-icons-png.freepik.com/512/5900/5900091.png" alt="Gachapon Machine">
+            </div>
+            <div class="gacha-buttons mt-4">
+                <button id="draw-gacha-btn" class="btn gacha-btn">สุ่มกาชาปองความทรงจำ</button>
+                <button id="history-btn" class="btn history-btn">ดูความทรงจำที่ได้รับ</button>
+                <button id="next-letter-btn" class="btn letter-btn">ไปหน้าถัดไป</button>
+            </div>
         </div>
-        <p class="swipe-instruction fade-in delay-1">เลื่อนซ้ายขวาดูรูปได้เลยน้า 👉</p>
+    </div>
+
+    <!-- Gacha Result Modal -->
+    <div id="gacha-modal">
+        <div class="gacha-modal-content polaroid" id="gacha-result">
+            <!-- Item injected here via JS -->
+        </div>
+        <p class="gacha-close-hint">คลิกที่จอเพื่อปิด</p>
+    </div>
+
+    <!-- History Modal -->
+    <div id="history-modal" class="hidden">
+        <div class="history-modal-content">
+            <button id="close-history-btn" class="btn close-btn">ปิด ✖</button>
+            <h3 class="history-title">ความทรงจำที่สุ่มได้แล้ว</h3>
+            <div class="history-grid" id="history-grid">
+                <!-- Items injected here via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Letter Screen -->
+    <div id="letter-screen" class="hidden">
+        <div class="envelope-wrapper">
+            <div id="envelope" class="envelope">
+                <div class="flap"></div>
+                <div class="pocket"></div>
+                <div class="letter">
+                    <div class="letter-content">
+                        ถึง เพื่อน <br><br>
+                        ดีใจจังที่เธอกดเข้ามาดูนะ<br>
+                        เค้าแค่อยากจะบอกว่า เค้ารู้ตัวแล้วว่าที่ผ่านมาอาจจะทำตัวไม่ดีไปบ้าง<br>
+                        แต่อยากให้รู้ไว้ว่าเค้าขอโทษจากใจจริงๆ<br><br>
+                        ภาษารักเราอาจไม่ตรงกันตามที่เธอต้องการ  อาจจะเป็นเซอร์ไพรซ์ ดอกไม้ ไปหาบ่อยๆ วันสำคัญต้องการให้เป็นวันพิเศษ หรือ ซิกแพค!!<br>
+                        เค้าก็ไม่มีอะไรจะแก้ตัวจริง เค้าไม่บังตับให้เธอกลับมาหรอก เค้าเคารพการตัดสินใจของเธอ<br>
+                        อาจจะรู้สึกว่าหลายๆครั้งที่เธอบอก ก็อาจจะต้องการให้เค้าเปลี่ยน ตอนนั้นเค้าก็เปลี่ยนไม่ได้ทำให้เธอเสียความรู้สึก<br><br>
+                        เค้ามีความสุขมากนะ ที่มีเธออยู่ ที่เธอชอบถามว่า เค้ามีความสุขไหม เค้ามีความสุขมากๆนะ มากจริงๆ ขอบคุณเธอนะ<br><br>
+                        นี้อาจจะเป็นครั้งสุดท้ายที่เค้าได้ทำอะไรให้อย่างนี้ เค้าก็พยายามเต็มที่กับสิ่งนี้ ขอบคุณสำหรับทุกอย่าง<br><br>
+                        จริงๆเค้าก็รู้สึกหน่อยๆนะ ว่าเธอรู้สึกน้อยลง แต่เค้าก็ให้พื้นที่เธอในการคิดทบทวน ไม่อยากรบกวนจนเกินไป เค้าอาจจะแค่ไม่ยอมรับก็ได้<br><br>
+                        เค้าจะพยายามในทางของเค้า พัฒนาตัวเค้าเอง ไปแบบที่เค้าต้องการ จริงๆเค้าก็มีเป้าหมายของเค้าตั้งแต่แรกละ<br><br>
+                        แต่พอมีเธอเป้าหมายเค้าก็เปลี่ยนไป ขอบคุณที่ทำให้เค้าเติบโตนะ เค้าคงจะรออยู่ตรงนี้เท่าที่จะไหว เป็นกำลังใจให้นะ<br><br>
+                        อยากให้เราเจอกันอีกทีตอนที่เราพร้อมนะ แต่ไม่รู้จะเจอกันอีกไหม ขอให้ประสบความสำเร็จในทางที่เลือกนะหรือเจอคนที่เธอฝัน<br><br>
+                        เค้าไม่รู้ว่าเค้าเป็นคนที่ใช่สำหรับเธอไหม แต่ถ้ามีโอกาสก็ขอให้เจอกันอีก ขอบคุณเธอที่ชอบบอกให้เก็บความทรงจำไว้นะ มองไปก็เศร้านะ<br><br>
+                        โชคดีนะ เค้าจะคอยดูความสำเร็จของเธอนะ<br><br>
+                    </div>
+                </div>
+                <div class="heart-seal">❤</div>
+            </div>
+        </div>
+        <p class="envelope-hint" id="envelope-hint">แตะที่ซองเพื่ออ่านจดหมาย</p>
     </div>
 
 
 
     <script src="script.js"></script>
 </body>
+
 </html>

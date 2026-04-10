@@ -14,15 +14,15 @@ const pleadingMessages = [
     "รักเพื่อนนะ 💕",
     "เพื่อนใจร้ายย 🥺",
     "อย่าไปเลยยย 🌸",
-    "เบื่อกันแล้วหรอ 🥰"
+    "เบื่อกันแล้วหรอ "
 ];
 
 const successFlow = [
-    { text: "เย้! ดีใจที่สูดดดดดดดดดดด ที่ๆเราไปเที่ยวคาเฟ่ด้วยกัน ถึงแม้เค้าจะถ่ายได้ไม่ดีแต่เค้าก็ตั้งใจนะะ", img: "1.jpg" },
+    { text: "ที่ๆเราไปเที่ยวคาเฟ่ด้วยกัน ถึงแม้เค้าจะถ่ายได้ไม่ดีแต่เค้าก็ตั้งใจนะะ", img: "1.jpg" },
     { text: "เค้าคิดถึงเธอมากๆเลยนะ ตอนปีใหม่ที่เราไปบ้านนัท ที่เธอบอกกกันว่าเรามาอยู่ด้วยกันทุกปีเลยนะ", img: "2.jpg" },
-    { text: "ขอบคุณที่ยอมให้โอกาสเค้าอีกครั้ง วันเกิดเธอครั้งนั้นเค้าตั้งใจสั่งเค้กให้เธอเลยนะ ถึงแม้จะไม่ได้มีของขวัญให้เค้าขอโทษนะ", img: "3.jpg" },
-    { text: "สัญญาว่าจะทำตัวให้ดีขึ้น วันนั้นไปรอเธอที่คลินิกเธอหน้าสดแต่เค้าก็ชอบ", img: "4.jpg" },
-    { text: "ขอบคุณจริงๆนะ เค้ารักเธอนะ ตอนนั้นเธอชวนออกมากินฮาจิบังจำได้ว่าเค้าใส่เสื้อยางรถยนต์ มีความสุขจริงๆ", img: "5.jpg" },
+    { text: "วันเกิดเธอครั้งนั้นเค้าตั้งใจสั่งเค้กให้เธอเลยนะ ถึงแม้จะไม่ได้มีของขวัญให้เค้าขอโทษนะ", img: "3.jpg" },
+    { text: "วันนั้นไปรอเธอที่คลินิกเธอหน้าสดแต่เค้าก็ชอบ", img: "4.jpg" },
+    { text: "ขอบคุณจริงๆนะ ตอนนั้นเธอชวนออกมากินฮาจิบังจำได้ว่าเค้าใส่เสื้อยางรถยนต์ มีความสุขจริงๆ", img: "5.jpg" },
     { text: "สัญญาว่าจะทำตัวให้ดีขึ้น มากินหมาล่าที่ยูเนี่ยนมอ เหมือนช่วงนั้นเธอมีงานที่มอเยอะ มานั่งกินไอติมที่แมคต่อด้วย", img: "6.jpg" },
     { text: "รูปนี้มาเกษตรแฟร์ มากินหมูกะทะหรือจิ้มจุ่มนี้ละตรงริมสระน้ำ นั่งคุยกับเธอเรื่อยเปื่อย", img: "7.jpg" },
     { text: "มากินฮาจิบัง เธอหน้าสดอีกแล้วเหมือนตอนนั้นหาร้านนั่งแล้วนึกไม่ออกเลยนั่งกินร้านนี้", img: "8.jpg" },
@@ -36,12 +36,54 @@ const successFlow = [
     { text: "เราไปที่ไกลไปนั่งเล่นเครื่องเกมกันสองคน จำได้ว่าขากลับเราพูดเรื่องเดินขึ้นเขา 5555", img: "16.jpg" },
     { text: "เธอพามากินจ่าอู่ ไอติมอร่อยย เธอชอบซดน้ำซุปหมูกะทะกิน", img: "17.jpg" },
     { text: "ขากลับตอนเครื่องเล่นเกม เราแวะกินบะหมี่อร่อยมาก พาเค้ากลับดึกครั้งแรกๆ", img: "18.jpg" },
+    { text: "วันที่เราเลิกกันแล้วเจอกันครั้งแรก", img: "24.jpg" },
+    { text: "วันนั้นคือวันที่ไปคาเฟ่ เค้าได้รูปโปรใหม่เพราะเธอ", img: "25.jpg" },
+    { text: "เอาโทรศัพท์เค้าไปถ่ายตอนไหนเนี่ย", img: "27.jpg" },
+    { text: "เธอให้ถ่ายวันที่เธอลองเปลี่ยนลุคใหม่ เค้าชอบมากเธอใส่กระโปรงเป็นครั้งแรกที่เห็น", img: "31.jpg" },
+    { text: "เธอใส่กระโปรงวันนี้เรามากินซูชิโรกันต่อด้วยกัน", img: "32.jpg" },
+    { text: "แอบถ่ายตอนเธอมาหอเค้า มาทีไรหลับตลอด", img: "33.jpg" },
+    { text: "เราไปปั่นเป็ดด้วยกันครั้งแรก เหนื่อยหน่อยๆแต่สนุกมาก", img: "34.jpg" },
+    { text: "วันที่เรามารอคาราโอเกะ เค้าทำหน้างี้ตลอดเลย 5555 เมื่อก่อน", img: "35.jpg" },
+    { text: "วันที่เรามารอคาราโอเกะ พร้อมจะร้องแทททูละ", img: "36.jpg" },
+    { text: "กลับหลังจากกินหมูกะทะจ่าอู่ เราเดินกลับพร้อมท้องป่อง", img: "37.jpg" },
+    { text: "เรากิน AKA ด้วยกัน นานๆทีกิน", img: "38.jpg" },
+    { text: "ขากลับที่เราไปเล่นเกม ถ่ายรูป คาเฟ่สวยมาก", img: "39.jpg" },
+    { text: "กินบุฟเฟ่ หมูเกาหลี จำได้แค่เหนียวมากแต่ฟิลดี", img: "40.jpg" },
+    { text: "กินบุฟเฟ่ หมูเกาหลี ถ่ายตอนเผลอ", img: "41.jpg" },
+    { text: "กินหมูกะทะ ตอนคบกันแรก เค้าเนิร์ดจัง", img: "42.jpg" },
+    { text: "ราชินีหมูกะทะ ตัวจริง", img: "43.jpg" },
+    { text: "กินย่างเนยยย อีกแล้ววววว", img: "45.jpg" },
+    { text: "กินร้านอาหารที่สายหยุด เราไม่ได้กินนานละ ขนมหวานอร่อย", img: "46.jpg" },
+    { text: "กิน EAT AM ARE เค้าชอบรูปนี้มากบอกไม่ถูกน่ารักกก", img: "47.jpg" },
+    { text: "ตอนเราเจอกันแรกๆ เธอกินยำปลากระป๋องมั้ง กินเผ็ดๆ เหมือนตอนนั้นเราไปเดินห้างอะไรสักอย่าง", img: "48.jpg" },
+    { text: "รูปแรกที่ยูเนี่ยนมอ ในอัลบั้มไลน์ ใส่ชุด น.ศ. ดั้วะ ยังติ๋มๆ", img: "49.jpg" },
+    { text: "เรามากิน Pepper Launch เจอเธอแรกๆ ชอบใส่แมส", img: "50.jpg" },
+    { text: "เจอกันตอนแรกสุดเลย หน้ากรม เธอใส่แมส ยิ้มแฉ่ง กินอาหารญี่ปุ่นนน", img: "51.jpg" },
+    { text: "เค้ามาส่งเธอ จำได้ว่าเราน่าจะกอดกันครั้งแรก อยู่บน BTS", img: "52.jpg" },
+    { text: "มาเที่ยว Union เรามานั่งรอคิวคาราโอเกะตรงับนไดเลื่อน เธอง่วงเลยให้เธอนอนซบไหล่", img: "53.jpg" },
+    { text: "กิน Pepper Launch เหมือนเราจะกินตรงเซนลาดชั้นล่างสุด", img: "54.jpg" },
+    { text: "เจอเธอครั้งแรกๆเหมือนกัน เรากิน", img: "55.jpg" },
+    { text: "ขากลับที่จ่าอู่ ยิ้มเดินกลับย่อยอาหาร", img: "57.jpg" },
 ];
 
 const videoFlow = [
     { text: "HNY ปีที่เราไปดูเบียดกัน ตอนแรกนึกว่าจะเป็นแบบอีแทวอน", video: "19.mp4" },
     { text: "พาเธอไปเล่นเครื่องเล่นที่เซนทรัลรามอินทรา", video: "20.mp4" },
-    { text: "มากินพาสต้ากันหน้ากรมเค้า", video: "21.mp4" }
+    { text: "มากินพาสต้ากันหน้ากรมเค้า", video: "21.mp4" },
+    { text: "วันที่เราไปเล่นเกมด้วยกัน ถ่ายรูปด้วยกัน เธอเล่นไม่ค่อยเก่งเลยเค้าต้องรอ 555", video: "22.mp4" },
+    { text: "เธอเอาโทรศัพท์เค้าไปเล่น ตอนนั้นอยู่ที่แมคโดนัลล", video: "23.mp4" },
+    { text: "วันที่ไปฉลองวันเกิดเธอ เค้าประหม่ามาก หรูสุดๆ เธอสวยมากวันนั้น", video: "26.mp4" },
+    { text: "เธอเอาโทรศัพท์เค้าไปเล่น ตอนนั้นอยู่ที่แมคโดนัลล", video: "23.mp4" },
+    { text: "เราพยายามดูคอนเสิร์ตแทททูด้วยกันแต่สุดท้ายติดที่เลนข้างทาง", video: "28.mp4" },
+    { text: "เราพยายามดูคอนเสิร์ตแทททูด้วยกันแต่สุดท้ายติดที่เลนข้างทาง", video: "29.mp4" },
+    { text: "เธอตอนเราไปเที่ยวและกลับ BTS ด้วยกัน", video: "30.mp4" },
+    { text: "เธอฝึกพูดกับกล้องครั้งแรกๆ ไปกินย่างเนยยย", video: "44.mp4" },
+    { text: "เราลองสั่งสติกเกอร์ ชื่อเพื่อน เอามาแปะหลังเคสเค้าที่ หอประชุมศิริกิต", video: "56.mp4" },
+    { text: "เค้าขัดขวางไม่ให้ถ่ายยยยย", video: "58.mp4" },
+    { text: "ย่างเนย โดนใช้ให้ไปเอาหมู", video: "59.mp4" },
+    { text: "ขากลับ BTS น่ารักน่าชัง", video: "60.mp4" },
+    { text: "กินบิงซูอ้วนนนน", video: "61.mp4" },
+    { text: "เธอมาหอ ให้เล่นเกมปลูกผัก เด็กติดเกมจริงๆ", video: "62.mp4" },
 ];
 
 let currentMsgIndex = 0;
@@ -102,58 +144,15 @@ function spawnBackgroundMessage() {
     bgMessagesContainer.appendChild(msg);
 }
 
+// Combine items
+const gachaPool = [...successFlow, ...videoFlow];
+let remainingPool = [...gachaPool];
+let drawnItems = [];
+
 function showSuccess() {
     mainContainer.classList.add('hidden');
     bgMessagesContainer.style.display = 'none'; // ซ่อนข้อความพื้นหลังตอนกดตกลง
     successScreen.classList.remove('hidden');
-
-    const slider = document.getElementById('polaroid-slider');
-    slider.innerHTML = '';
-
-    successFlow.forEach((item, index) => {
-        const polaroid = document.createElement('div');
-        polaroid.className = 'polaroid';
-
-        // Random slight rotation for natural polaroid look
-        const randRot = (Math.random() * 8 - 4).toFixed(1);
-        polaroid.style.setProperty('--rand-rot', randRot);
-
-        const img = document.createElement('img');
-        img.src = item.img;
-        img.alt = "Memory";
-        img.draggable = false; // Prevent ghost drag on desktop
-
-        const text = document.createElement('div');
-        text.className = 'polaroid-text';
-        text.innerText = item.text;
-
-        polaroid.appendChild(img);
-        polaroid.appendChild(text);
-        slider.appendChild(polaroid);
-    });
-
-    videoFlow.forEach((item, index) => {
-        const polaroid = document.createElement('div');
-        polaroid.className = 'polaroid';
-
-        // Random slight rotation for natural polaroid look
-        const randRot = (Math.random() * 8 - 4).toFixed(1);
-        polaroid.style.setProperty('--rand-rot', randRot);
-
-        const video = document.createElement('video');
-        video.src = item.video;
-        video.controls = true;
-        video.preload = "metadata";
-        // Optionally add styling inline if needed, but css handles this now
-
-        const text = document.createElement('div');
-        text.className = 'polaroid-text';
-        text.innerText = item.text;
-
-        polaroid.appendChild(video);
-        polaroid.appendChild(text);
-        slider.appendChild(polaroid);
-    });
 
     // Create floating sparkles
     for (let i = 0; i < 20; i++) {
@@ -163,44 +162,6 @@ function showSuccess() {
 }
 
 yesBtn.addEventListener('click', showSuccess);
-
-// Drag to scroll logic for sliders (Desktop)
-const sliders = [document.getElementById('polaroid-slider'), document.getElementById('cinema-slider')];
-
-sliders.forEach(sl => {
-    if (!sl) return;
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-
-    sl.addEventListener('mousedown', (e) => {
-        // If the user clicks on the video, don't trigger the scroll drag
-        if (e.target.tagName.toLowerCase() === 'video') return;
-
-        isDown = true;
-        sl.classList.add('active');
-        startX = e.pageX - sl.offsetLeft;
-        scrollLeft = sl.scrollLeft;
-    });
-
-    sl.addEventListener('mouseleave', () => {
-        isDown = false;
-        sl.classList.remove('active');
-    });
-
-    sl.addEventListener('mouseup', () => {
-        isDown = false;
-        sl.classList.remove('active');
-    });
-
-    sl.addEventListener('mousemove', (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - sl.offsetLeft;
-        const walk = (x - startX) * 2;
-        sl.scrollLeft = scrollLeft - walk;
-    });
-});
 
 function createSparkle() {
     const sparkle = document.createElement('div');
@@ -215,56 +176,141 @@ function createSparkle() {
     // Randomize speed
     sparkle.style.animationDuration = (Math.random() * 3 + 4) + 's';
 
-    successScreen.appendChild(sparkle);
+    document.body.appendChild(sparkle);
 
     setTimeout(() => {
         sparkle.remove();
     }, 8000);
 }
 
-// --- Movie Projection Logic ---
-const videoUpload = document.getElementById('video-upload');
-const movieModal = document.getElementById('movie-modal');
-const closeMovieBtn = document.getElementById('close-movie');
-const myVideo = document.getElementById('my-video');
+// --- Gacha Logic ---
+const drawGachaBtn = document.getElementById('draw-gacha-btn');
+const nextLetterBtn = document.getElementById('next-letter-btn');
+const gachaMachine = document.getElementById('gacha-machine');
+const gachaModal = document.getElementById('gacha-modal');
+const gachaResult = document.getElementById('gacha-result');
+const letterScreen = document.getElementById('letter-screen');
 
-if (videoUpload && movieModal && closeMovieBtn && myVideo) {
-    videoUpload.addEventListener('change', function (event) {
-        const file = event.target.files[0];
-        if (file) {
-            const fileURL = URL.createObjectURL(file);
-            myVideo.src = fileURL;
-            movieModal.classList.add('active');
+drawGachaBtn.addEventListener('click', () => {
+    if (remainingPool.length === 0) {
+        alert("เปิดดูความทรงจำครบหมดแล้วน้าา 💖 (เดี๋ยวเริ่มใส่ตู้ให้ใหม่นะ)");
+        remainingPool = [...gachaPool]; // Reset pool
+    }
 
-            // Play video automatically when modal opens
-            myVideo.play().catch(e => console.log('Autoplay blocked:', e));
-        }
-    });
+    // Shake animation
+    gachaMachine.classList.add('shake');
+    drawGachaBtn.disabled = true;
 
-    closeMovieBtn.addEventListener('click', () => {
-        movieModal.classList.remove('active');
-        myVideo.pause();
-        myVideo.currentTime = 0;
-        // Reset input so user can re-select the same or another video
-        videoUpload.value = '';
-    });
+    setTimeout(() => {
+        gachaMachine.classList.remove('shake');
+
+        // Pick random item without replacement
+        const randomIndex = Math.floor(Math.random() * remainingPool.length);
+        const item = remainingPool.splice(randomIndex, 1)[0];
+
+        // Add to history
+        drawnItems.push(item);
+
+        showGachaResult(item);
+        drawGachaBtn.disabled = false;
+
+    }, 600); // Wait for shake animation to finish
+});
+
+function showGachaResult(item) {
+    gachaResult.innerHTML = '';
+
+    const randRot = (Math.random() * 8 - 4).toFixed(1);
+    gachaResult.style.setProperty('--rand-rot', randRot);
+    gachaResult.style.transform = `rotate(${randRot}deg)`; // Apply immediately for modal
+
+    if (item.video) {
+        const video = document.createElement('video');
+        video.src = item.video;
+        video.controls = true;
+        video.autoplay = true;
+        gachaResult.appendChild(video);
+    } else if (item.img) {
+        const img = document.createElement('img');
+        img.src = item.img;
+        img.alt = "Memory";
+        gachaResult.appendChild(img);
+    }
+
+    const text = document.createElement('div');
+    text.className = 'polaroid-text';
+    text.innerText = item.text;
+    gachaResult.appendChild(text);
+
+    gachaModal.classList.add('show');
 }
 
-const slides = document.querySelectorAll('.movie-projector');
+gachaModal.addEventListener('click', (e) => {
+    // Only close if we click outside the video controls
+    if (e.target.tagName.toLowerCase() !== 'video') {
+        gachaModal.classList.remove('show');
+        // Pause video if playing
+        const vid = gachaResult.querySelector('video');
+        if (vid) vid.pause();
+    }
+});
 
-function updateActiveSlide() {
-    slides.forEach(slide => slide.classList.remove('active'));
+// --- Navigation to Letter ---
+nextLetterBtn.addEventListener('click', () => {
+    successScreen.classList.add('hidden');
+    letterScreen.classList.remove('hidden');
+});
 
-    let center = window.innerWidth / 2;
+// --- History Logic ---
+const historyBtn = document.getElementById('history-btn');
+const historyModal = document.getElementById('history-modal');
+const closeHistoryBtn = document.getElementById('close-history-btn');
+const historyGrid = document.getElementById('history-grid');
 
-    slides.forEach(slide => {
-        const rect = slide.getBoundingClientRect();
-        const slideCenter = rect.left + rect.width / 2;
+historyBtn.addEventListener('click', () => {
+    historyGrid.innerHTML = '';
+    if (drawnItems.length === 0) {
+        historyGrid.innerHTML = '<p style="text-align:center; grid-column: 1/-1; margin-top: 2rem; color: #ff66a3;">ยังไม่ได้สุ่มความทรงจำเลย ลองสุ่มดูก่อนนะ 💕</p>';
+    } else {
+        drawnItems.forEach((item) => {
+            const el = document.createElement('div');
+            el.className = 'history-item';
 
-        if (Math.abs(center - slideCenter) < 100) {
-            slide.classList.add('active');
-        }
-    });
-}
+            let mediaHtml = '';
+            if (item.video) {
+                mediaHtml = `<video src="${item.video}" preload="metadata"></video>`;
+            } else {
+                mediaHtml = `<img src="${item.img}" alt="Memory">`;
+            }
 
-document.getElementById('cinema-slider').addEventListener('scroll', updateActiveSlide);
+            el.innerHTML = `
+                ${mediaHtml}
+                <p>${item.text}</p>
+            `;
+
+            // Re-open gacha modal to view bigger
+            el.addEventListener('click', () => {
+                showGachaResult(item);
+            });
+
+            historyGrid.appendChild(el);
+        });
+    }
+    historyModal.classList.remove('hidden');
+});
+
+closeHistoryBtn.addEventListener('click', () => {
+    historyModal.classList.add('hidden');
+});
+
+// --- Envelope Logic ---
+const envelopeWrapper = document.querySelector('.envelope-wrapper');
+const envelope = document.getElementById('envelope');
+const envelopeHint = document.getElementById('envelope-hint');
+
+envelopeWrapper.addEventListener('click', () => {
+    if (!envelope.classList.contains('open')) {
+        envelope.classList.add('open');
+        envelopeHint.innerText = "ตั้งใจอ่านนะ!!";
+    }
+});
