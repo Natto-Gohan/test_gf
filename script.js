@@ -1,4 +1,16 @@
 // script.js
+
+// ==========================================
+// 🎵 CREATOR SETTINGS (ตั้งค่าสำหรับผู้สร้าง) 🎵
+// ==========================================
+// ใส่ชื่อไฟล์เพลงที่ต้องการให้เล่นในหน้าตู้กาชาปอง
+const GACHA_MUSIC_FILE = "2222.mp3"; // เปลี่ยนชื่อไฟล์ตรงนี้
+
+// ใส่ชื่อไฟล์เพลง (เช่น .mp3, .mp4) ที่ต้องการให้เล่นตอนเป็นจดหมาย
+// เช่น "music.mp3" หรือลิงก์เพลง ถ้าไม่มีปล่อยว่างเป็น ""
+const BG_MUSIC_FILE = "1111.mp3"; // เปลี่ยนชื่อไฟล์ตรงนี้นะครับ
+// ==========================================
+
 const noBtn = document.getElementById('no-btn');
 const yesBtn = document.getElementById('yes-btn');
 const mainContainer = document.getElementById('main-container');
@@ -64,6 +76,7 @@ const successFlow = [
     { text: "กิน Pepper Launch เหมือนเราจะกินตรงเซนลาดชั้นล่างสุด", img: "54.jpg" },
     { text: "เจอเธอครั้งแรกๆเหมือนกัน เรากินจำได้ว่าตำอะไรสักอย่าง", img: "55.jpg" },
     { text: "ขากลับที่จ่าอู่ ยิ้มเดินกลับย่อยอาหาร", img: "57.jpg" },
+    { text: "เธอตอนเราไปเที่ยวและกลับ BTS ด้วยกัน", img: "30.mp4" },
 ];
 
 const videoFlow = [
@@ -76,7 +89,6 @@ const videoFlow = [
     { text: "เธอเอาโทรศัพท์เค้าไปเล่น ตอนนั้นอยู่ที่แมคโดนัลล", video: "23.mp4" },
     { text: "เราพยายามดูคอนเสิร์ตแทททูด้วยกันแต่สุดท้ายติดที่เลนข้างทาง", video: "28.mp4" },
     { text: "เราพยายามดูคอนเสิร์ตแทททูด้วยกันแต่สุดท้ายติดที่เลนข้างทาง", video: "29.mp4" },
-    { text: "เธอตอนเราไปเที่ยวและกลับ BTS ด้วยกัน", video: "30.mp4" },
     { text: "เธอฝึกพูดกับกล้องครั้งแรกๆ ไปกินย่างเนยยย", video: "44.mp4" },
     { text: "เราลองสั่งสติกเกอร์ ชื่อเพื่อน เอามาแปะหลังเคสเค้าที่ หอประชุมศิริกิต", video: "56.mp4" },
     { text: "เค้าขัดขวางไม่ให้ถ่ายยยยย", video: "58.mp4" },
@@ -154,6 +166,11 @@ function showSuccess() {
     bgMessagesContainer.style.display = 'none'; // ซ่อนข้อความพื้นหลังตอนกดตกลง
     successScreen.classList.remove('hidden');
 
+    if (GACHA_MUSIC_FILE && gachaBgAudio) {
+        gachaMusicControls.classList.remove('hidden');
+        gachaBgAudio.play().catch(e => console.log("Audio play blocked by browser:", e));
+    }
+
     // Create floating sparkles
     for (let i = 0; i < 20; i++) {
         setTimeout(createSparkle, Math.random() * 2000);
@@ -184,6 +201,19 @@ function createSparkle() {
 }
 
 // --- Gacha Logic ---
+const gachaBgAudio = document.getElementById('gacha-bg-audio');
+const gachaMusicControls = document.getElementById('gacha-music-controls');
+const gachaVolumeSlider = document.getElementById('gacha-volume-slider');
+
+if (GACHA_MUSIC_FILE && gachaBgAudio) {
+    gachaBgAudio.src = GACHA_MUSIC_FILE;
+    gachaBgAudio.volume = gachaVolumeSlider.value / 100;
+    
+    gachaVolumeSlider.addEventListener('input', (e) => {
+        gachaBgAudio.volume = e.target.value / 100;
+    });
+}
+
 const drawGachaBtn = document.getElementById('draw-gacha-btn');
 const nextLetterBtn = document.getElementById('next-letter-btn');
 const gachaMachine = document.getElementById('gacha-machine');
@@ -259,6 +289,10 @@ gachaModal.addEventListener('click', (e) => {
 nextLetterBtn.addEventListener('click', () => {
     successScreen.classList.add('hidden');
     letterScreen.classList.remove('hidden');
+    
+    if (GACHA_MUSIC_FILE && gachaBgAudio) {
+        gachaBgAudio.pause();
+    }
 });
 
 // --- History Logic ---
@@ -307,10 +341,27 @@ closeHistoryBtn.addEventListener('click', () => {
 const envelopeWrapper = document.querySelector('.envelope-wrapper');
 const envelope = document.getElementById('envelope');
 const envelopeHint = document.getElementById('envelope-hint');
+const bgAudio = document.getElementById('bg-audio');
+const musicControls = document.getElementById('music-controls');
+const volumeSlider = document.getElementById('volume-slider');
+
+// Setup Audio
+if (BG_MUSIC_FILE) {
+    bgAudio.src = BG_MUSIC_FILE;
+    bgAudio.volume = volumeSlider.value / 100;
+    musicControls.classList.remove('hidden');
+
+    volumeSlider.addEventListener('input', (e) => {
+        bgAudio.volume = e.target.value / 100;
+    });
+}
 
 envelopeWrapper.addEventListener('click', () => {
     if (!envelope.classList.contains('open')) {
         envelope.classList.add('open');
         envelopeHint.innerText = "ตั้งใจอ่านนะ!!";
+        if (BG_MUSIC_FILE) {
+            bgAudio.play().catch(e => console.log("Audio play blocked by browser:", e));
+        }
     }
 });
