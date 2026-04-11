@@ -428,3 +428,40 @@ envelopeWrapper.addEventListener('click', () => {
         }
     }
 });
+
+// --- Breakup Timer Logic ---
+function updateBreakupTimer() {
+    // 17 กุมภาพันธ์ 23:37
+    const currentYear = new Date().getFullYear();
+    let targetDate = new Date(currentYear, 1, 17, 23, 37, 0).getTime(); // Note: Month is 0-indexed (1 = Feb)
+    
+    // If this date is in the future, it means the breakup happened last year
+    if (targetDate > Date.now()) {
+        targetDate = new Date(currentYear - 1, 1, 17, 23, 37, 0).getTime();
+    }
+
+    setInterval(() => {
+        const now = new Date().getTime();
+        const diff = now - targetDate;
+
+        if (diff > 0) {
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            const daysEl = document.getElementById('timer-days');
+            const hoursEl = document.getElementById('timer-hours');
+            const minEl = document.getElementById('timer-minutes');
+            const secEl = document.getElementById('timer-seconds');
+            
+            if(daysEl) daysEl.innerText = days;
+            if(hoursEl) hoursEl.innerText = hours;
+            if(minEl) minEl.innerText = minutes;
+            if(secEl) secEl.innerText = seconds;
+        }
+    }, 1000);
+}
+
+// Call on load
+document.addEventListener("DOMContentLoaded", updateBreakupTimer);
