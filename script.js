@@ -308,8 +308,11 @@ function spawnFloatingImages() {
         
         el.classList.add('floating-image');
         
-        // Randomize size
-        const size = Math.random() * 80 + 80; // 80px to 160px
+        // Randomize size based on screen width
+        const isMobile = window.innerWidth < 600;
+        const minSize = isMobile ? 45 : 80;
+        const maxSize = isMobile ? 90 : 160;
+        const size = Math.random() * (maxSize - minSize) + minSize; 
         el.style.width = size + 'px';
         el.style.height = size + 'px';
         
