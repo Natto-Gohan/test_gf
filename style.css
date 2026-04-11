@@ -488,6 +488,7 @@ body {
     height: 220px;
     cursor: pointer;
     transition: transform 0.3s ease;
+    z-index: 10;
 }
 
 .envelope-wrapper:hover {
@@ -610,6 +611,48 @@ body {
     font-weight: 700;
     font-size: 1.2rem;
     text-shadow: 1px 1px 4px rgba(255, 255, 255, 0.8);
+    z-index: 10;
+}
+
+/* --- Floating Images Background --- */
+#floating-images-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 1; /* Keep behind envelope */
+    overflow: hidden;
+}
+
+.floating-image {
+    position: absolute;
+    bottom: -30vh;
+    object-fit: cover;
+    border-radius: 12px;
+    opacity: 0;
+    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.4);
+    border: 3px solid #fff;
+    animation: floatUpImage linear forwards;
+    z-index: 1;
+}
+
+@keyframes floatUpImage {
+    0% {
+        transform: translateY(0vh) rotate(var(--rot-start));
+        opacity: 0;
+    }
+    10% {
+        opacity: var(--max-opacity, 0.4);
+    }
+    90% {
+        opacity: var(--max-opacity, 0.4);
+    }
+    100% {
+        transform: translateY(-130vh) rotate(var(--rot-end));
+        opacity: 0;
+    }
 }
 
 @media (max-width: 600px) {

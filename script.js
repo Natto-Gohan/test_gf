@@ -286,12 +286,72 @@ gachaModal.addEventListener('click', (e) => {
 });
 
 // --- Navigation to Letter ---
+let floatingImagesInterval;
+const floatingImagesContainer = document.getElementById('floating-images-container');
+
+function spawnFloatingImages() {
+    if (!floatingImagesContainer || gachaPool.length === 0) return;
+    
+    // Spawn 3 random images/videos
+    for (let i = 0; i < 3; i++) {
+        const randomIndex = Math.floor(Math.random() * gachaPool.length);
+        const item = gachaPool[randomIndex];
+        
+        const el = document.createElement(item.video ? 'video' : 'img');
+        el.src = item.video || item.img;
+        if (item.video) {
+            el.muted = true;
+            el.autoplay = true;
+            el.loop = true;
+            el.playsInline = true;
+        }
+        
+        el.classList.add('floating-image');
+        
+        // Randomize size
+        const size = Math.random() * 80 + 80; // 80px to 160px
+        el.style.width = size + 'px';
+        el.style.height = size + 'px';
+        
+        // Random horizontal start position
+        const left = Math.random() * 80 + 5; // 5vw to 85vw to keep mostly on screen
+        el.style.left = left + 'vw';
+        
+        // Randomize duration (speed)
+        const duration = Math.random() * 8 + 12; // 12s to 20s
+        el.style.animationDuration = duration + 's';
+        
+        // Random rotation
+        const rotStart = parseFloat((Math.random() * 40 - 20).toFixed(1)) + 'deg';
+        const rotEnd = parseFloat((Math.random() * 180 - 90).toFixed(1)) + 'deg';
+        el.style.setProperty('--rot-start', rotStart);
+        el.style.setProperty('--rot-end', rotEnd);
+        
+        // Random opacity max
+        const maxOpacity = (Math.random() * 0.2 + 0.2).toFixed(2); // 0.2 to 0.4 opacity
+        el.style.setProperty('--max-opacity', maxOpacity);
+        
+        floatingImagesContainer.appendChild(el);
+        
+        // Cleanup after animation finishes
+        setTimeout(() => {
+            el.remove();
+        }, duration * 1000);
+    }
+}
+
 nextLetterBtn.addEventListener('click', () => {
     successScreen.classList.add('hidden');
     letterScreen.classList.remove('hidden');
     
     if (GACHA_MUSIC_FILE && gachaBgAudio) {
         gachaBgAudio.pause();
+    }
+    
+    // Start floating images animation
+    if (!floatingImagesInterval) {
+        spawnFloatingImages(); // spawn first batch
+        floatingImagesInterval = setInterval(spawnFloatingImages, 3500); // spawn 3 images every 3.5 seconds
     }
 });
 
